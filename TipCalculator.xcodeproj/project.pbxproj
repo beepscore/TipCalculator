@@ -25,6 +25,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DE3D9DA619B3AD55009C5003 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DE9CAFA519B3AAA200AE30BF /* TipCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TipCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE9CAFA919B3AAA200AE30BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE9CAFAA19B3AAA200AE30BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +58,7 @@
 		DE9CAF9C19B3AAA100AE30BF = {
 			isa = PBXGroup;
 			children = (
+				DE3D9DA619B3AD55009C5003 /* README.md */,
 				DE9CAFA719B3AAA200AE30BF /* TipCalculator */,
 				DE9CAFBA19B3AAA200AE30BF /* TipCalculatorTests */,
 				DE9CAFA619B3AAA200AE30BF /* Products */,
@@ -395,6 +397,7 @@
 				DE9CAFC319B3AAA200AE30BF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DE9CAFC419B3AAA200AE30BF /* Build configuration list for PBXNativeTarget "TipCalculatorTests" */ = {
 			isa = XCConfigurationList;
@@ -403,6 +406,7 @@
 				DE9CAFC619B3AAA200AE30BF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
