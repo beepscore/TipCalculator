@@ -12,6 +12,8 @@
 		DE9CAFB019B3AAA200AE30BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE9CAFAE19B3AAA200AE30BF /* Main.storyboard */; };
 		DE9CAFB219B3AAA200AE30BF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE9CAFB119B3AAA200AE30BF /* Images.xcassets */; };
 		DE9CAFBE19B3AAA200AE30BF /* TipCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9CAFBD19B3AAA200AE30BF /* TipCalculatorTests.swift */; };
+		DEC58C0119B3AE9B00B5A5C4 /* TipCalculatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC58C0019B3AE9B00B5A5C4 /* TipCalculatorModel.swift */; };
+		DEC58C0219B3AE9B00B5A5C4 /* TipCalculatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC58C0019B3AE9B00B5A5C4 /* TipCalculatorModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +37,7 @@
 		DE9CAFB719B3AAA200AE30BF /* TipCalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TipCalculatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE9CAFBC19B3AAA200AE30BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE9CAFBD19B3AAA200AE30BF /* TipCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipCalculatorTests.swift; sourceTree = "<group>"; };
+		DEC58C0019B3AE9B00B5A5C4 /* TipCalculatorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipCalculatorModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +85,7 @@
 				DE9CAFAE19B3AAA200AE30BF /* Main.storyboard */,
 				DE9CAFB119B3AAA200AE30BF /* Images.xcassets */,
 				DE9CAFA819B3AAA200AE30BF /* Supporting Files */,
+				DEC58C0019B3AE9B00B5A5C4 /* TipCalculatorModel.swift */,
 			);
 			path = TipCalculator;
 			sourceTree = "<group>";
@@ -210,6 +214,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEC58C0119B3AE9B00B5A5C4 /* TipCalculatorModel.swift in Sources */,
 				DE9CAFAD19B3AAA200AE30BF /* ViewController.swift in Sources */,
 				DE9CAFAB19B3AAA200AE30BF /* AppDelegate.swift in Sources */,
 			);
@@ -220,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE9CAFBE19B3AAA200AE30BF /* TipCalculatorTests.swift in Sources */,
+				DEC58C0219B3AE9B00B5A5C4 /* TipCalculatorModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
