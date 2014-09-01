@@ -17,6 +17,8 @@ class ViewController: UIViewController {
     @IBOutlet var taxPctLabel: UILabel!
     @IBOutlet var resultsTextView: UITextView!
 
+    let tipCalc = TipCalculatorModel(total: 33.25, taxPct: 0.06)
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
