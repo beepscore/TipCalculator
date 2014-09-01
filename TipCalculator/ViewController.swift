@@ -22,6 +22,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        refreshUI()
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,4 +41,10 @@ class ViewController: UIViewController {
     @IBAction func viewTapped(sender : AnyObject) {
     }
 
+    func refreshUI() {
+        totalTextField.text = String(format: "%0.2f", tipCalc.total)
+        taxPctSlider.value = Float(tipCalc.taxPct) * 100
+        taxPctLabel.text = "Tax Percentage (\(Int(taxPctSlider.value))%)"
+        resultsTextView.text = ""
+    }
 }
