@@ -9,7 +9,14 @@
 import UIKit
 
 class ViewController: UIViewController {
-                            
+
+    // ! implies variables are optional, implicitly unwrapped
+    // app will crash if they aren't set before use
+    @IBOutlet var totalTextField: UITextField!
+    @IBOutlet var taxPctSlider: UISlider!
+    @IBOutlet var taxPctLabel: UILabel!
+    @IBOutlet var totalTextView: UITextView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
