@@ -36,6 +36,8 @@ class ViewController: UIViewController {
     }
 
     @IBAction func taxPercentageChanged(sender : AnyObject) {
+        tipCalc.taxPct = Double(taxPctSlider.value) / 100.0
+        refreshUI()
     }
 
     @IBAction func viewTapped(sender : AnyObject) {
