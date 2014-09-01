@@ -28,5 +28,14 @@ class ViewController: UIViewController {
     }
 
 
-}
+    // AnyObject can be any type, similar to Objective C type "id"
+    @IBAction func calculateTapped(sender : AnyObject) {
+    }
 
+    @IBAction func taxPercentageChanged(sender : AnyObject) {
+    }
+
+    @IBAction func viewTapped(sender : AnyObject) {
+    }
+
+}
