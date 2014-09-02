@@ -33,6 +33,19 @@ class ViewController: UIViewController {
 
     // AnyObject can be any type, similar to Objective C type "id"
     @IBAction func calculateTapped(sender : AnyObject) {
+
+        // Currently Swift String class doesn't have a method to convert to Double
+        // Use as NSString to convert Swift String to NSString
+        // then call NSString doubleValue
+        tipCalc.total = Double((totalTextField.text as NSString).doubleValue)
+
+        let possibleTips = tipCalc.returnPossibleTips()
+        var results = ""
+        // enumerate over dictionary keys and values at the same time
+        for (tipPct, tipValue) in possibleTips {
+            results += "\(tipPct)%: \(tipValue)\n"
+        }
+        resultsTextView.text = results
     }
 
     @IBAction func taxPercentageChanged(sender : AnyObject) {
@@ -41,6 +54,8 @@ class ViewController: UIViewController {
     }
 
     @IBAction func viewTapped(sender : AnyObject) {
+        // call resignFirstResponder to dismiss keyboard
+        totalTextField.resignFirstResponder()
     }
 
     func refreshUI() {
