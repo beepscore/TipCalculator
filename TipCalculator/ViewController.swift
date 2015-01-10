@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 class ViewController: UIViewController {
 
@@ -60,7 +61,16 @@ class ViewController: UIViewController {
 
     func refreshUI() {
         totalTextField.text = String(format: "%0.2f", tipCalc.total)
-        taxPctSlider.value = Float(tipCalc.taxPct) * 100
+        // http://stackoverflow.com/questions/24029163/finding-index-of-character-in-swift-string?rq=1
+        //String total = "\(tipCalc.total)"
+        // TODO depends upon locale, could be , !
+        //var rangeOfSeparator = text.rangeOfString(".")
+
+        //let total : NSString = NSString(format: "%0.2f", tipCalc.total)
+        //let total = NSString(format: "%0.2f", tipCalc.total)
+        //totalTextField.text = (total as String)
+
+        taxPctSlider.value = Float(tipCalc.taxPct) * 100.0
         taxPctLabel.text = "Tax Percentage (\(Int(taxPctSlider.value))%)"
         resultsTextView.text = ""
     }
