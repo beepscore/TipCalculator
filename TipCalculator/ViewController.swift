@@ -9,16 +9,19 @@
 import UIKit
 import Foundation
 
-class ViewController: UIViewController {
+class ViewController: UIKit.UIViewController, UITableViewDataSource {
 
     // ! implies variables are optional, implicitly unwrapped
     // app will crash if they aren't set before use
     @IBOutlet var totalTextField: UITextField!
     @IBOutlet var taxPctSlider: UISlider!
     @IBOutlet var taxPctLabel: UILabel!
-    @IBOutlet var resultsTextView: UITextView!
 
+    @IBOutlet weak var tableView: UITableView!
+    
     let tipCalc = TipCalculatorModel(total: 33.25, taxPct: 0.06)
+    var possibleTips = Dictionary<Int, (tipAmt: Double, total: Double)>()
+    var sortedKeys:[Int] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,13 +43,9 @@ class ViewController: UIViewController {
         // then call NSString doubleValue
         tipCalc.total = Double((totalTextField.text as NSString).doubleValue)
 
-        let possibleTips = tipCalc.returnPossibleTips()
-        var results = ""
-        // enumerate over dictionary keys and values at the same time
-        for (tipPct, tipValue) in possibleTips {
-            results += "\(tipPct)%: \(tipValue)\n"
-        }
-        resultsTextView.text = results
+        possibleTips = tipCalc.returnPossibleTips()
+        sortedKeys = sorted(Array(possibleTips.keys))
+        tableView.reloadData()
     }
 
     @IBAction func taxPercentageChanged(sender : AnyObject) {
@@ -72,6 +71,23 @@ class ViewController: UIViewController {
 
         taxPctSlider.value = Float(tipCalc.taxPct) * 100.0
         taxPctLabel.text = "Tax Percentage (\(Int(taxPctSlider.value))%)"
-        resultsTextView.text = ""
     }
+
+    // MARK UITableViewDataSource
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return sortedKeys.count
+    }
+
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: UITableViewCellStyle.Value2, reuseIdentifier: nil)
+        let tipPct = sortedKeys[indexPath.row]
+
+        let tipAmt = possibleTips[tipPct]!.tipAmt
+        let total = possibleTips[tipPct]!.total
+
+        cell.textLabel?.text = "\(tipPct)%:"
+        cell.detailTextLabel?.text = String(format:"Tip: $%-.2f, Total: $%0.2f", tipAmt, total)
+        return cell
+    }
+
 }

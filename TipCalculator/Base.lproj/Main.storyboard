@@ -49,31 +49,33 @@
                                     <action selector="calculateTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="QBg-fs-2cY"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEE-Bp-nqQ">
-                                <rect key="frame" x="16" y="192" width="568" height="400"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="80P-vY-evZ">
+                                <rect key="frame" x="0.0" y="192" width="600" height="408"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                                <connections>
+                                    <outlet property="dataSource" destination="vXZ-lx-hvc" id="T9B-dN-azr"/>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="s00-sw-3rV"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="zuD-m3-gtQ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="4" id="0a4-gn-Dya"/>
                             <constraint firstItem="krU-ca-dhf" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="13" id="7xc-vf-FsU"/>
-                            <constraint firstItem="XEE-Bp-nqQ" firstAttribute="leading" secondItem="zuD-m3-gtQ" secondAttribute="leading" constant="-4" id="DBF-Mk-I42"/>
                             <constraint firstItem="eRM-dV-p3s" firstAttribute="bottom" secondItem="zuD-m3-gtQ" secondAttribute="bottom" constant="5" id="IBd-ZW-qzE"/>
                             <constraint firstItem="eRM-dV-p3s" firstAttribute="top" secondItem="krU-ca-dhf" secondAttribute="bottom" constant="9" id="Or1-Lg-I6Y"/>
-                            <constraint firstItem="XEE-Bp-nqQ" firstAttribute="centerX" secondItem="PwN-uk-qJS" secondAttribute="centerX" id="SGg-ok-UNF"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="XEE-Bp-nqQ" secondAttribute="bottom" constant="8" id="Uwk-Nb-iDh"/>
+                            <constraint firstItem="80P-vY-evZ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="PfI-83-Lwf"/>
                             <constraint firstItem="PwN-uk-qJS" firstAttribute="top" secondItem="eRM-dV-p3s" secondAttribute="bottom" constant="8" symbolic="YES" id="VKf-e6-mWu"/>
                             <constraint firstItem="krU-ca-dhf" firstAttribute="bottom" secondItem="Umm-Gg-VtA" secondAttribute="bottom" constant="5" id="aGN-Y0-7y7"/>
                             <constraint firstItem="eRM-dV-p3s" firstAttribute="leading" secondItem="zuD-m3-gtQ" secondAttribute="trailing" constant="8" symbolic="YES" id="axE-id-QDs"/>
-                            <constraint firstItem="XEE-Bp-nqQ" firstAttribute="top" secondItem="PwN-uk-qJS" secondAttribute="bottom" constant="8" symbolic="YES" id="cls-yU-nAM"/>
-                            <constraint firstItem="eRM-dV-p3s" firstAttribute="trailing" secondItem="XEE-Bp-nqQ" secondAttribute="trailing" id="e24-d6-gYZ"/>
+                            <constraint firstItem="80P-vY-evZ" firstAttribute="centerX" secondItem="PwN-uk-qJS" secondAttribute="centerX" id="e9U-ad-9dV"/>
                             <constraint firstItem="krU-ca-dhf" firstAttribute="leading" secondItem="eRM-dV-p3s" secondAttribute="leading" id="fMG-pE-TNp"/>
                             <constraint firstAttribute="trailing" secondItem="krU-ca-dhf" secondAttribute="trailing" constant="16" id="ljS-Cw-qYt"/>
+                            <constraint firstItem="80P-vY-evZ" firstAttribute="bottom" secondItem="2fi-mo-0CV" secondAttribute="top" id="mPa-TF-xnE"/>
                             <constraint firstItem="krU-ca-dhf" firstAttribute="leading" secondItem="Umm-Gg-VtA" secondAttribute="trailing" constant="10" id="oAt-qu-cz3"/>
+                            <constraint firstItem="80P-vY-evZ" firstAttribute="top" secondItem="PwN-uk-qJS" secondAttribute="bottom" constant="8" symbolic="YES" id="oIP-iV-Wy7"/>
+                            <constraint firstAttribute="trailing" secondItem="80P-vY-evZ" secondAttribute="trailing" id="rua-I5-vqf"/>
                             <constraint firstItem="eRM-dV-p3s" firstAttribute="trailing" secondItem="krU-ca-dhf" secondAttribute="trailing" id="xnJ-0Q-N1g"/>
                         </constraints>
                         <connections>
@@ -82,7 +84,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Tip Calculator" id="Xya-dA-Yvb"/>
                     <connections>
-                        <outlet property="resultsTextView" destination="XEE-Bp-nqQ" id="cpC-4k-GZ8"/>
+                        <outlet property="tableView" destination="80P-vY-evZ" id="mFu-vQ-ECT"/>
                         <outlet property="taxPctLabel" destination="zuD-m3-gtQ" id="de3-CX-FoZ"/>
                         <outlet property="taxPctSlider" destination="eRM-dV-p3s" id="AAT-df-nkx"/>
                         <outlet property="totalTextField" destination="krU-ca-dhf" id="qHh-cj-ACe"/>
