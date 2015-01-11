@@ -31,9 +31,6 @@
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="krU-ca-dhf">
                                 <rect key="frame" x="192" y="77" width="392" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="392" id="SgC-ah-gaI"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
@@ -75,6 +72,7 @@
                             <constraint firstItem="XEE-Bp-nqQ" firstAttribute="top" secondItem="PwN-uk-qJS" secondAttribute="bottom" constant="8" symbolic="YES" id="cls-yU-nAM"/>
                             <constraint firstItem="eRM-dV-p3s" firstAttribute="trailing" secondItem="XEE-Bp-nqQ" secondAttribute="trailing" id="e24-d6-gYZ"/>
                             <constraint firstItem="krU-ca-dhf" firstAttribute="leading" secondItem="eRM-dV-p3s" secondAttribute="leading" id="fMG-pE-TNp"/>
+                            <constraint firstAttribute="trailing" secondItem="krU-ca-dhf" secondAttribute="trailing" constant="16" id="ljS-Cw-qYt"/>
                             <constraint firstItem="krU-ca-dhf" firstAttribute="leading" secondItem="Umm-Gg-VtA" secondAttribute="trailing" constant="10" id="oAt-qu-cz3"/>
                             <constraint firstItem="eRM-dV-p3s" firstAttribute="trailing" secondItem="krU-ca-dhf" secondAttribute="trailing" id="xnJ-0Q-N1g"/>
                         </constraints>
