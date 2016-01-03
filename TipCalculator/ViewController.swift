@@ -19,7 +19,7 @@ class ViewController: UIKit.UIViewController, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
     
-    let tipCalc = TipCalculatorModel(total: 33.25, taxPct: 0.06)
+    let tipCalc = TipCalculatorModel(total: 33.25, taxRateFractional: 0.06)
     var possibleTips = Dictionary<Int, (tipAmt: Double, total: Double)>()
     var sortedKeys:[Int] = []
 
@@ -49,7 +49,7 @@ class ViewController: UIKit.UIViewController, UITableViewDataSource {
     }
 
     @IBAction func taxPercentageChanged(sender : AnyObject) {
-        tipCalc.taxPct = Double(taxPctSlider.value) / 100.0
+        tipCalc.taxRateFractional = Double(taxPctSlider.value) / 100.0
         refreshUI()
     }
 
@@ -69,7 +69,7 @@ class ViewController: UIKit.UIViewController, UITableViewDataSource {
         //let total = NSString(format: "%0.2f", tipCalc.total)
         //totalTextField.text = (total as String)
 
-        taxPctSlider.value = Float(tipCalc.taxPct) * 100.0
+        taxPctSlider.value = Float(tipCalc.taxRateFractional) * 100.0
         taxPctLabel.text = "Tax Percentage (\(Int(taxPctSlider.value))%)"
     }
 

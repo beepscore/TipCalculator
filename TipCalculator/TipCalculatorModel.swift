@@ -11,18 +11,18 @@ import UIKit
 
 class TipCalculatorModel {
     var total: Double
-    var taxPct: Double
+    var taxRateFractional: Double
     
     // computed property, doesn't store value, computes it each time.
     var subtotal: Double {
         get {
-            return total / (taxPct + 1)
+            return total / (taxRateFractional + 1)
         }
     }
     
-    init(total: Double, taxPct: Double) {
+    init(total: Double, taxRateFractional: Double) {
         self.total = total
-        self.taxPct = taxPct
+        self.taxRateFractional = taxRateFractional
     }
 
     /**
