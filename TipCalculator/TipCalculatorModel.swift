@@ -16,7 +16,7 @@ class TipCalculatorModel {
     // computed property, doesn't store value, computes it each time.
     var subtotal: Double {
         get {
-            return total / (taxRateFractional + 1)
+            return total / (1 + taxRateFractional)
         }
     }
     
