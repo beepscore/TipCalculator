@@ -26,10 +26,10 @@ class TipCalculatorModel {
     }
 
     /**
-     * @param tipPct is fractional amount e.g specify 0.15 for 15% tip
+     * @param tipRateFractional is fractional amount e.g specify 0.15 for 15% tip
      */
-    func calcTipWithTipPct(tipPct: Double) -> (tipAmt: Double, total: Double) {
-        let tipAmt = subtotal * tipPct
+    func calcTipWithTipPct(tipRateFractional: Double) -> (tipAmt: Double, total: Double) {
+        let tipAmt = subtotal * tipRateFractional
         let finalTotal = total + tipAmt
         return (tipAmt, finalTotal)
     }

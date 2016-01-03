@@ -80,12 +80,12 @@ class ViewController: UIKit.UIViewController, UITableViewDataSource {
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.Value2, reuseIdentifier: nil)
-        let tipPct = sortedKeys[indexPath.row]
+        let tipRateFractional = sortedKeys[indexPath.row]
 
-        let tipAmt = possibleTips[tipPct]!.tipAmt
-        let total = possibleTips[tipPct]!.total
+        let tipAmt = possibleTips[tipRateFractional]!.tipAmt
+        let total = possibleTips[tipRateFractional]!.total
 
-        cell.textLabel?.text = "\(tipPct)%:"
+        cell.textLabel?.text = "\(tipRateFractional)%:"
         cell.detailTextLabel?.text = String(format:"Tip: $%-.2f, Total: $%0.2f", tipAmt, total)
         return cell
     }
