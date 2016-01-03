@@ -41,10 +41,10 @@ class ViewController: UIKit.UIViewController, UITableViewDataSource {
         // Currently Swift String class doesn't have a method to convert to Double
         // Use as NSString to convert Swift String to NSString
         // then call NSString doubleValue
-        tipCalc.total = Double((totalTextField.text as NSString).doubleValue)
+        tipCalc.total = Double((totalTextField.text! as NSString).doubleValue)
 
         possibleTips = tipCalc.returnPossibleTips()
-        sortedKeys = sorted(Array(possibleTips.keys))
+        sortedKeys = Array(possibleTips.keys).sort()
         tableView.reloadData()
     }
 

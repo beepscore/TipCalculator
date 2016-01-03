@@ -34,7 +34,7 @@ class TipCalculatorModel {
     // return dictionary with key Int and value tuple of Doubles
     func returnPossibleTips() -> [Int: (tipAmt: Double, total: Double)] {
         let possibleTipsInferred = [0.15, 0.18, 0.20]
-        let possibleTipsExplicit : [Double] = [0.15, 0.18, 0.20]
+        //let possibleTipsExplicit : [Double] = [0.15, 0.18, 0.20]
 
         // instantiate empty dictionary
         var retval = Dictionary<Int, (tipAmt:Double, total:Double)> ()
