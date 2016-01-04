@@ -25,6 +25,8 @@ class ViewController: UIKit.UIViewController, UITableViewDataSource {
 
     var sortedKeys:[String] = []
 
+    // MARK: - lifecycle methods
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -35,6 +37,8 @@ class ViewController: UIKit.UIViewController, UITableViewDataSource {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
+    // MARK: -
 
     /**
      * @param sender AnyObject can be any type, similar to Objective C type "id"
@@ -50,12 +54,10 @@ class ViewController: UIKit.UIViewController, UITableViewDataSource {
 
         let tipRatesKeys = TipCalculatorModel.tipRates.keys
 
-        // TODO: cant assign to sorted keys directly??
-        var xsortedKeys = tipRatesKeys.sort( {
+        sortedKeys = tipRatesKeys.sort( {
             (firstKey, secondKey) -> Bool in
                 return TipCalculatorModel.tipRates[firstKey] < TipCalculatorModel.tipRates[secondKey] })
-        sortedKeys = xsortedKeys
-        
+
         tableView.reloadData()
     }
 
@@ -84,7 +86,8 @@ class ViewController: UIKit.UIViewController, UITableViewDataSource {
         taxPctLabel.text = "Tax Percentage (\(Int(taxPctSlider.value))%)"
     }
 
-    // MARK UITableViewDataSource
+    // MARK: - UITableViewDataSource
+
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sortedKeys.count
     }
