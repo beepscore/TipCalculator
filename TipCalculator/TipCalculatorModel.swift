@@ -19,7 +19,7 @@ class TipCalculatorModel {
     /**
      * amount plus tax, no tip
      */
-    var total: Double
+    var baseAmountPlusTax: Double
 
     /**
      * tax rate as a fraction 0.00 - 1.0, not a percent
@@ -31,16 +31,16 @@ class TipCalculatorModel {
      * base amount no tax, no tip
      * Computed property.
      * Doesn't store value, computes value each time it is called.
-     * Uses instance variables total and taxRateFractional.
+     * Uses instance variables baseAmountPlusTax and taxRateFractional.
      */
     var baseAmount: Double {
         get {
-            return total / (1 + taxRateFractional)
+            return baseAmountPlusTax / (1 + taxRateFractional)
         }
     }
     
-    init(total: Double, taxRateFractional: Double) {
-        self.total = total
+    init(baseAmountPlusTax: Double, taxRateFractional: Double) {
+        self.baseAmountPlusTax = baseAmountPlusTax
         self.taxRateFractional = taxRateFractional
     }
 
@@ -54,7 +54,7 @@ class TipCalculatorModel {
     func calcTipWithTipRateFractional(tipRateFractional: Double)
         -> (tipAmount: Double, basePlusTaxPlusTip: Double) {
             let tipAmount = (tipRateFractional * baseAmount)
-            return (tipAmount, (total + tipAmount))
+            return (tipAmount, (baseAmountPlusTax + tipAmount))
     }
 
     // return dictionary containing key and value a tuple of Doubles

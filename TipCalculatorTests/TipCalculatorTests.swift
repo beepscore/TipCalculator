@@ -13,7 +13,7 @@ class TipCalculatorTests: XCTestCase {
 
     func testCalcTipWithTipRateFractional() {
         let testTotal = 29.37
-        let tipCalculator = TipCalculatorModel(total: testTotal, taxRateFractional: 0.10)
+        let tipCalculator = TipCalculatorModel(baseAmountPlusTax: testTotal, taxRateFractional: 0.10)
 
         let actual = tipCalculator.calcTipWithTipRateFractional(0.12)
         XCTAssertEqualWithAccuracy(3.204, actual.tipAmount, accuracy: 0.001)
@@ -22,7 +22,7 @@ class TipCalculatorTests: XCTestCase {
 
     func testReturnPossibleTips() {
         let testTotal = 29.37
-        let tipCalculator = TipCalculatorModel(total: testTotal, taxRateFractional: 0.10)
+        let tipCalculator = TipCalculatorModel(baseAmountPlusTax: testTotal, taxRateFractional: 0.10)
 
         let actual = tipCalculator.returnPossibleTips()
         XCTAssertEqualWithAccuracy(4.005, actual["Low"]!.tipAmount, accuracy: 0.001)

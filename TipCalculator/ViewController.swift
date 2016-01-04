@@ -19,7 +19,7 @@ class ViewController: UIKit.UIViewController, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
     
-    let tipCalc = TipCalculatorModel(total: 33.25, taxRateFractional: 0.06)
+    let tipCalc = TipCalculatorModel(baseAmountPlusTax: 33.25, taxRateFractional: 0.06)
 
     var possibleTips = Dictionary<String, (tipAmount: Double, basePlusTaxPlusTip: Double)>()
 
@@ -48,7 +48,7 @@ class ViewController: UIKit.UIViewController, UITableViewDataSource {
         // Currently Swift String class doesn't have a method to convert to Double
         // Use as NSString to convert Swift String to NSString
         // then call NSString doubleValue
-        tipCalc.total = Double((totalTextField.text! as NSString).doubleValue)
+        tipCalc.baseAmountPlusTax = Double((totalTextField.text! as NSString).doubleValue)
 
         possibleTips = tipCalc.returnPossibleTips()
 
@@ -72,14 +72,14 @@ class ViewController: UIKit.UIViewController, UITableViewDataSource {
     }
 
     func refreshUI() {
-        totalTextField.text = String(format: "%0.2f", tipCalc.total)
+        totalTextField.text = String(format: "%0.2f", tipCalc.baseAmountPlusTax)
         // http://stackoverflow.com/questions/24029163/finding-index-of-character-in-swift-string?rq=1
-        //String total = "\(tipCalc.total)"
+        //let baseAmountPlusTax = "\(tipCalc.baseAmountPlusTax)"
         // TODO depends upon locale, could be , !
         //var rangeOfSeparator = text.rangeOfString(".")
 
-        //let total : NSString = NSString(format: "%0.2f", tipCalc.total)
-        //let total = NSString(format: "%0.2f", tipCalc.total)
+        //let total : NSString = NSString(format: "%0.2f", tipCalc.baseAmountPlusTax)
+        //let total = NSString(format: "%0.2f", tipCalc.baseAmountPlusTax)
         //totalTextField.text = (total as String)
 
         taxPctSlider.value = Float(tipCalc.taxRateFractional) * 100.0
