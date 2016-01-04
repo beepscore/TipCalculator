@@ -28,12 +28,12 @@ class TipCalculatorModel {
     var taxRateFractional: Double
     
     /**
-     * amount no tax, no tip
+     * base amount no tax, no tip
      * Computed property.
      * Doesn't store value, computes value each time it is called.
      * Uses instance variables total and taxRateFractional.
      */
-    var subtotal: Double {
+    var baseAmount: Double {
         get {
             return total / (1 + taxRateFractional)
         }
@@ -53,7 +53,7 @@ class TipCalculatorModel {
      */
     func calcTipWithTipRateFractional(tipRateFractional: Double)
         -> (tipAmount: Double, basePlusTaxPlusTip: Double) {
-            let tipAmount = (tipRateFractional * subtotal)
+            let tipAmount = (tipRateFractional * baseAmount)
             return (tipAmount, (total + tipAmount))
     }
 
