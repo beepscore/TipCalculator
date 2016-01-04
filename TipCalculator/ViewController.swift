@@ -20,8 +20,10 @@ class ViewController: UIKit.UIViewController, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     
     let tipCalc = TipCalculatorModel(total: 33.25, taxRateFractional: 0.06)
-    var possibleTips = Dictionary<Int, (tipAmt: Double, total: Double)>()
-    var sortedKeys:[Int] = []
+
+    var possibleTips = Dictionary<String, (tipAmount: Double, basePlusTaxPlusTip: Double)>()
+
+    var sortedKeys:[String] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,8 +36,9 @@ class ViewController: UIKit.UIViewController, UITableViewDataSource {
         // Dispose of any resources that can be recreated.
     }
 
-
-    // AnyObject can be any type, similar to Objective C type "id"
+    /**
+     * @param sender AnyObject can be any type, similar to Objective C type "id"
+     */
     @IBAction func calculateTapped(sender : AnyObject) {
 
         // Currently Swift String class doesn't have a method to convert to Double
@@ -44,7 +47,15 @@ class ViewController: UIKit.UIViewController, UITableViewDataSource {
         tipCalc.total = Double((totalTextField.text! as NSString).doubleValue)
 
         possibleTips = tipCalc.returnPossibleTips()
-        sortedKeys = Array(possibleTips.keys).sort()
+
+        let tipRatesKeys = TipCalculatorModel.tipRates.keys
+
+        // TODO: cant assign to sorted keys directly??
+        var xsortedKeys = tipRatesKeys.sort( {
+            (firstKey, secondKey) -> Bool in
+                return TipCalculatorModel.tipRates[firstKey] < TipCalculatorModel.tipRates[secondKey] })
+        sortedKeys = xsortedKeys
+        
         tableView.reloadData()
     }
 
@@ -80,13 +91,14 @@ class ViewController: UIKit.UIViewController, UITableViewDataSource {
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.Value2, reuseIdentifier: nil)
-        let tipRateFractional = sortedKeys[indexPath.row]
 
-        let tipAmt = possibleTips[tipRateFractional]!.tipAmt
-        let total = possibleTips[tipRateFractional]!.total
+        let keyForRow = sortedKeys[indexPath.row]
+        let tipRateFractional = TipCalculatorModel.tipRates[keyForRow]
+        let tipAmount = possibleTips[keyForRow]!.tipAmount
+        let basePlusTaxPlusTip = possibleTips[keyForRow]!.basePlusTaxPlusTip
 
-        cell.textLabel?.text = "\(tipRateFractional)%:"
-        cell.detailTextLabel?.text = String(format:"Tip: $%-.2f, Total: $%0.2f", tipAmt, total)
+        cell.textLabel?.text = "\(Int(tipRateFractional! * 100)) %:"
+        cell.detailTextLabel?.text = String(format:"Tip: $%-.2f, Total: $%0.2f", tipAmount, basePlusTaxPlusTip)
         return cell
     }
 

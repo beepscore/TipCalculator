@@ -10,10 +10,29 @@ import Foundation
 import UIKit
 
 class TipCalculatorModel {
+
+    // static is similar to class variable
+    // http://stackoverflow.com/questions/24015207/class-variables-not-yet-supported
+    // use dictionary with keys of a "stable" type, not subject to inaccuracy of Double
+    static let tipRates = ["Low": 0.15, "Medium": 0.18, "High": 0.20]
+
+    /**
+     * amount plus tax, no tip
+     */
     var total: Double
+
+    /**
+     * tax rate as a fraction 0.00 - 1.0, not a percent
+     * e.g 0.08 not 8%
+     */
     var taxRateFractional: Double
     
-    // computed property, doesn't store value, computes it each time.
+    /**
+     * amount no tax, no tip
+     * Computed property.
+     * Doesn't store value, computes value each time it is called.
+     * Uses instance variables total and taxRateFractional.
+     */
     var subtotal: Double {
         get {
             return total / (1 + taxRateFractional)
@@ -26,27 +45,27 @@ class TipCalculatorModel {
     }
 
     /**
-     * @param tipRateFractional is fractional amount e.g specify 0.15 for 15% tip
+     * @param tipRateFractional is tip rate as a fraction 0 - 1.0, not a percent
+     * e.g. 0.15 not 15%
+     * @return tuple (tipAmount, basePlusTaxPlusTip)
+     * tip amount in currency unit e.g. $
+     * basePlusTaxPlusTip is base amount + tax amount + tip amount. In currency unit e.g. $
      */
-    func calcTipWithTipPct(tipRateFractional: Double) -> (tipAmt: Double, total: Double) {
-        let tipAmt = subtotal * tipRateFractional
-        let finalTotal = total + tipAmt
-        return (tipAmt, finalTotal)
+    func calcTipWithTipRateFractional(tipRateFractional: Double)
+        -> (tipAmount: Double, basePlusTaxPlusTip: Double) {
+            let tipAmount = (tipRateFractional * subtotal)
+            return (tipAmount, (total + tipAmount))
     }
 
-    // return dictionary with key Int and value tuple of Doubles
-    func returnPossibleTips() -> [Int: (tipAmt: Double, total: Double)] {
-        let possibleTipsInferred = [0.15, 0.18, 0.20]
-        //let possibleTipsExplicit : [Double] = [0.15, 0.18, 0.20]
+    // return dictionary containing key and value a tuple of Doubles
+    func returnPossibleTips() -> [String: (tipAmount: Double, basePlusTaxPlusTip: Double)] {
 
         // instantiate empty dictionary
-        var retval = Dictionary<Int, (tipAmt:Double, total:Double)> ()
-
-        for possibleTip in possibleTipsInferred {
-            let intPct = Int(possibleTip*100)
-            retval[intPct] = calcTipWithTipPct(possibleTip)
+        var possibleTips = [String: (tipAmount:Double, basePlusTaxPlusTip:Double)] ()
+        for tipRate in TipCalculatorModel.tipRates {
+            possibleTips[tipRate.0] = calcTipWithTipRateFractional(tipRate.1)
         }
-        return retval
+        return possibleTips
     }
     
 }
